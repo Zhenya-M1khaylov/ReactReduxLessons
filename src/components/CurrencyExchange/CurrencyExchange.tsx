@@ -76,7 +76,7 @@ const CurrencyExchange: React.FC<CurrencyExchangePropsType> = ({
         </span>
             </div>
             <div className="fields">
-                <p>Currency rate: {currencyRate}</p>
+                <p>Currency rate on 04.10.2022 : {currencyRate}</p>
                 {viewCurrency}
             </div>
         </div>
