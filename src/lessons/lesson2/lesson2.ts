@@ -76,6 +76,33 @@ console.log(counter());
 
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
+function superSum(num: number) {
+    if (num <= 0) return 0
+    if (num === 1) return (n: number) => n
+
+    let acc: number[] = []
+
+    function helper(...args: number[]) {
+        acc = [...acc, ...args]
+        if (acc.length >= num) {
+            acc.length = num
+            return acc.reduce((acc, number) => acc + number)
+        } else {
+            return helper
+        }
+    }
+
+    return helper
+}
+
+//@ts-ignore
+superSum(3)(2)(5)(3)
+//@ts-ignore
+superSum(3)(2,5,3)
+//@ts-ignore
+superSum(3)(2,5)(3,9)
+
+
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 
