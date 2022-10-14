@@ -64,6 +64,23 @@ console.log(counter());
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
 
+function makeCounterTask3(n: number) {
+    let counter = n
+    return {
+        increase: () => ++counter,
+        decrease: () => --counter,
+        reset: () => {
+            counter = 0
+            return counter
+        },
+        set: (num: number) => {
+            counter = num
+            return counter
+        },
+        getCount: () => counter
+    }
+}
+
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
 // и что бы корректно работали следующие вызовы:
@@ -98,13 +115,59 @@ function superSum(num: number) {
 //@ts-ignore
 superSum(3)(2)(5)(3)
 //@ts-ignore
-superSum(3)(2,5,3)
+superSum(3)(2, 5, 3)
 //@ts-ignore
-superSum(3)(2,5)(3,9)
+superSum(3)(2, 5)(3, 9)
 
 
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
+
+// sumTo(1) = 1
+// sumTo(2) = 2 + 1 = 3
+// sumTo(3) = 3 + 2 + 1 = 6
+// sumTo(4) = 4 + 3 + 2 + 1 = 10
+// ...
+// sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050
+
+function sumToByLoop(n: number) {
+    let result = 0
+    for (let i = 1; i <= n; i++) {
+        result += i;
+    }
+    return result
+}
+
+function sumTo(n: number): number {
+    if (n === 1) return n
+    return n + sumTo(n - 1)
+}
+
+console.log(sumTo(100))
+
+// factorial
+
+function factorial(n: number): number {
+    return (n != 1) ? n * factorial(n - 1) : 1;
+}
+
+console.log(factorial(5))
+
+// fib
+
+function fib(n: number): number {
+    let a = 1;
+    let b = 1;
+    for (let i = 3; i <= n; i++) {
+        let c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+
+console.log(fib(77))
 
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
@@ -112,3 +175,4 @@ superSum(3)(2,5)(3,9)
 // just a plug
 export default () => {
 };
+
