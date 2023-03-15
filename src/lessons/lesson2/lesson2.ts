@@ -172,6 +172,14 @@ console.log(fib(77))
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
+function flat(arr: any) {
+    return arr.reduce((acc: any, cur: any) => acc.concat(Array.isArray(cur) ? flat(cur) : cur), []);
+};
+
+console.log(flat([333, [222, [444, [985]]]]));
+console.log(flat([298, [855], [22, [[89]]], [10, 69]]));
+
+
 // just a plug
 export default () => {
 };
